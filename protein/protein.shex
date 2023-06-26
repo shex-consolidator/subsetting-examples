@@ -1,0 +1,15 @@
+# Example created at Biohackathon 2023
+# Author: Jose Emilio Labra Gayo
+# Based on SPARQL query provided by: Kiyoko Aoki-Kinoshita
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+
+<protein> {
+    a             [ up:Protein ] ;
+    up:annotation @<annotation> 
+}
+
+<annotation> {
+    a [ up:Glycosylation_Annotation ]
+}

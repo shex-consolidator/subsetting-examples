@@ -1,0 +1,7 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX up: <http://purl.uniprot.org/core/>
+SELECT ?protein WHERE {
+        ?protein a up:Protein ;
+                 up:annotation ?annotation .
+        ?annotation a up:Glycosylation_Annotation.
+}
