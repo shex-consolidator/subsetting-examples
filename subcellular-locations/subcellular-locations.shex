@@ -9,7 +9,7 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 }
 
 <annotation> {
-  up:range     @<range>
+  up:range     @<range> ;
   rdfs:comment . ;
   a [ up:Transmembrane_Annotation 
       up:Topological_Domain_Annotation 
