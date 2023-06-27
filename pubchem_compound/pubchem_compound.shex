@@ -1,0 +1,292 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX bao: <http://www.bioassayontology.org/bao#>
+PREFIX bioassay: <http://rdf.ncbi.nlm.nih.gov/pubchem/bioassay/>
+PREFIX source: <http://rdf.ncbi.nlm.nih.gov/pubchem/source/>
+PREFIX taxonomy: <http://rdf.ncbi.nlm.nih.gov/pubchem/taxonomy/>
+PREFIX measuregroup: <http://rdf.ncbi.nlm.nih.gov/pubchem/measuregroup/>
+PREFIX endpoint: <http://rdf.ncbi.nlm.nih.gov/pubchem/endpoint/>
+PREFIX protein: <http://rdf.ncbi.nlm.nih.gov/pubchem/protein/>
+PREFIX substance: <http://rdf.ncbi.nlm.nih.gov/pubchem/substance/>
+PREFIX compound: <http://rdf.ncbi.nlm.nih.gov/pubchem/compound/>
+PREFIX pubchemv: <http://rdf.ncbi.nlm.nih.gov/pubchem/vocabulary#>
+PREFIX reference: <http://rdf.ncbi.nlm.nih.gov/pubchem/reference/>
+PREFIX patent: <http://rdf.ncbi.nlm.nih.gov/pubchem/patent/>
+PREFIX pathway: <http://rdf.ncbi.nlm.nih.gov/pubchem/pathway/>
+PREFIX synonym: <http://rdf.ncbi.nlm.nih.gov/pubchem/synonym/>
+PREFIX concept: <http://rdf.ncbi.nlm.nih.gov/pubchem/concept/>
+PREFIX gene: <http://rdf.ncbi.nlm.nih.gov/pubchem/gene/>
+PREFIX conserveddomain: <http://rdf.ncbi.nlm.nih.gov/pubchem/conserveddomain/>
+PREFIX descriptor: <http://rdf.ncbi.nlm.nih.gov/pubchem/descriptor/>
+PREFIX inchikey: <http://rdf.ncbi.nlm.nih.gov/pubchem/inchikey>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX biopax: <http://www.biopax.org/release/biopax-level3.owl#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX cito: <http://purl.org/spar/cito/>
+PREFIX epo_patent: <http://data.epo.org/linked-data/def/patent/>
+PREFIX pdbo: <http://rdf.wwpdb.org/schema/pdbx-v40.owl#>
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX fabio: <http://purl.org/spar/fabio/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cooccurrence: <http://rdf.ncbi.nlm.nih.gov/pubchem/cooccurrence/>
+PREFIX author: <http://rdf.ncbi.nlm.nih.gov/pubchem/author/>
+PREFIX book: <http://rdf.ncbi.nlm.nih.gov/pubchem/book/>
+PREFIX cell: <http://rdf.ncbi.nlm.nih.gov/pubchem/cell/>
+PREFIX disease: <http://rdf.ncbi.nlm.nih.gov/pubchem/disease/>
+PREFIX grant: <http://rdf.ncbi.nlm.nih.gov/pubchem/grant/>
+PREFIX journal: <http://rdf.ncbi.nlm.nih.gov/pubchem/journal/>
+PREFIX organization: <http://rdf.ncbi.nlm.nih.gov/pubchem/organization/>
+PREFIX edam: <http://edamontology.org/>
+PREFIX vcard2006: <http://www.w3.org/2006/vcard/ns#>
+PREFIX prism: <http://prismstandard.org/namespaces/basic/3.0/>
+PREFIX frapo: <http://purl.org/cerif/frapo/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+<PubChemCompoundShape> {
+  sio:has-attribute IRI * ;
+  sio:CHEMINF_000461 @<PubChemCompoundShape> * ;
+  skos:closeMatch IRI * ;
+  pubchemv:is_active_ingredient_of @<PubChemCompoundShape> * ;
+  sio:CHEMINF_000455 @<PubChemCompoundShape> * ;
+  sio:CHEMINF_000480 @<PubChemCompoundShape> * ;
+  sio:CHEMINF_000462 @<PubChemCompoundShape> * ;
+  pubchemv:has_parent @<PubChemCompoundShape> * ;
+  obo:has-role IRI ?
+}
+<PubChemSubstanceShape> {
+  dcterms:modified xsd:string  ;
+  sio:has-attribute IRI * ;
+  dcterms:source @<PubChemSourceShape>  ;
+  obo:RO_0000056 @<PubChemMeasureGroupShape> * ;
+  sio:CHEMINF_000477 @<PubChemCompoundShape> * ;
+  dcterms:available xsd:string  ;
+  cito:isDiscussedBy @<PubChemReferenceShape> * ;
+  skos:exactMatch IRI * ;
+  pdbo:link_to_pdb IRI *
+}
+<PubChemBioAssayShape> {
+  rdf:type [bao:BAO_0000015] ;
+  dcterms:source @<PubChemSourceShape>  ;
+  dcterms:title xsd:string  ;
+  bao:BAO_0000209 @<PubChemMeasureGroupShape> * ;
+  bao:BAO_0000210 IRI * ;
+  bao:BAO_0000540 @<PubChemBioAssayShape> * ;
+  bao:BAO_0001067 @<PubChemBioAssayShape> * ;
+  bao:BAO_0001094 @<PubChemBioAssayShape> * ;
+  biopax:organism @<PubChemTaxonomyShape>  ;
+  cito:isDiscussedBy @<PubChemPatentShape> *
+}
+<PubChemConceptShape> {
+  rdf:type [skos:concept] ;
+  pav:importedFrom @<PubChemSourceShape>  ;
+  skos:broader @<PubChemConceptShape>  ;
+  skos:inScheme @<PubChemConceptShape>  ;
+  skos:prefLabel xsd:string 
+}
+<PubChemConservedDomainShape> {
+  dcterms:title xsd:string  ;
+  cito:isDiscussedBy @<PubChemReferenceShape>  ;
+  dcterms:abstract xsd:string 
+}
+<PubChemDescriptorShape> {
+  sio:has-value xsd:integer 
+}
+<PubChemGeneShape> {
+  rdf:type [biopax:Gene] ;
+  dcterms:title xsd:string  ;
+  biopax:organism @<PubChemTaxonomyShape>  ;
+  skos:closeMatch IRI * ;
+  dcterms:alternative xsd:string * ;
+  sio:gene-symbol xsd:string  ;
+  obo:RO_0000056 IRI * ;
+  obo:RO_0000085 IRI * ;
+  obo:RO_0001025 IRI * ;
+  cito:isDiscussedBy @<PubChemReferenceShape> *
+}
+<PubChemEndpointShape> {
+  obo:IAO_0000136 @<PubChemSubstanceShape>  ;
+  sio:has-unit IRI  ;
+  sio:has-value xsd:float  ;
+  rdfs:label xsd:string  ;
+  pubchemv:PubChemAssayOutcome IRI  ;
+  cito:citesAsDataSource @<PubChemReferenceShape> 
+}
+<PubChemInchiKeyShape> {
+  rdf:type [sio:CHEMINF_000399] ;
+  sio:has-value xsd:string  ;
+  sio:is-attribute-of @<PubChemCompoundShape> 
+}
+<PubChemPatentShape> {
+  rdf:type [epo_patent:Publication] ;
+  dcterms:abstract xsd:string  ;
+  epo_patent:classificationCPCAdditional xsd:string  ;
+  epo_patent:classificationIPCAdditional xsd:string  ;
+  epo_patent:applicantVC xsd:string  ;
+  epo_patent:inventorVC xsd:string  ;
+  epo_patent:classificationIPCInventive xsd:string  ;
+  epo_patent:classificationCPCInventive xsd:string  ;
+  cito:isCitedBy @<PubChemPatentShape>  ;
+  epo_patent:filingDate xsd:string  ;
+  epo_patent:publicationNumber xsd:string 
+}
+<PubChemMeasureGroupShape> {
+  rdf:type [bao:BAO_0000040] ;
+  obo:OBI_0000299 @<PubChemEndpointShape>  ;
+  dcterms:title xsd:string  ;
+  obo:RO_0000057 IRI * ;
+  dcterms:source @<PubChemSourceShape> 
+}
+<PubChemPathwayShape> {
+  rdf:type [biopax:Pathway] ;
+  dcterms:title xsd:string  ;
+  biopax:organism @<PubChemTaxonomyShape>  ;
+  dcterms:source @<PubChemSourceShape>  ;
+  cito:isDiscussedBy @<PubChemReferenceShape> * ;
+  obo:RO_0000057 IRI + ;
+  biopax:pathwayComponent IRI + ;
+  skos:exactMatch IRI * ;
+  skos:related @<PubChemPathwayShape> *
+}
+<PubChemProteinShape> {
+  rdf:type [biopax:Protein] ;
+  dcterms:title xsd:string  ;
+  biopax:organism @<PubChemTaxonomyShape>  ;
+  skos:closeMatch IRI  ;
+  up:encodedBy @<PubChemGeneShape>  ;
+  pubchemv:hasSimilarProtein @<PubChemProteinShape>  ;
+  obo:RO_0002180 @<PubChemConservedDomainShape>  ;
+  pdbo:link_to_pdb IRI *
+}
+<PubChemReferenceShape> {
+  rdf:type [fabio:ReviewArticle] ;
+  rdf:type [fabio:JournalArticle] ;
+  dcterms:title xsd:string  ;
+  cito:discusses IRI * ;
+  dcterms:bibliographicCitation xsd:string  ;
+  dcterms:date xsd:string  ;
+  fabio:hasSubjectTerm IRI * ;
+  fabio:hasPrimarySubjectTerm IRI *
+}
+<PubChemSourceShape> {
+  rdf:type [dcterms:Dataset] ;
+  dcterms:title xsd:string  ;
+  dcterms:alternative xsd:string  ;
+  dcterms:subject @<PubChemConceptShape> * ;
+  foaf:homepage IRI  ;
+  dcterms:license IRI  ;
+  dcterms:rights xsd:string 
+}
+<PubChemTaxonomyShape> {
+  rdf:type [biopax:taxonomy] ;
+  dcterms:title xsd:string  ;
+  skos:closeMatch IRI *
+}
+<PubChemSynonymShape> {
+  sio:has-value xsd:string  ;
+  sio:is-attribute-of @<PubChemCompoundShape>  ;
+  dcterms:subject IRI *
+}
+<PubChemCompoundCompoundCooccurrenceShape> {
+  rdf:type [sio:SIO_001435] ;
+  rdf:subject @<PubChemCompoundShape>  ;
+  rdf:object @<PubChemCompoundShape>  ;
+  sio:SIO_001157 IRI  ;
+  sio:SIO_000300 xsd:integer 
+}
+<PubChemCompoundGeneCooccurrenceShape> {
+  rdf:type [sio:SIO_001257] ;
+  rdf:subject IRI  ;
+  rdf:object IRI  ;
+  sio:SIO_001157 IRI  ;
+  sio:SIO_000300 xsd:integer 
+}
+<PubChemCompoundDiseaseCooccurrenceShape> {
+  rdf:type [sio:SIO_000993] ;
+  rdf:subject IRI  ;
+  rdf:object IRI  ;
+  sio:SIO_001157 IRI  ;
+  sio:SIO_000300 xsd:integer 
+}
+<PubChemDiseaseDiseaseCooccurrenceShape> {
+  rdf:type [sio:SIO_001436] ;
+  rdf:subject @<PubChemDiseaseShape>  ;
+  rdf:object @<PubChemDiseaseShape>  ;
+  sio:SIO_001157 IRI  ;
+  sio:SIO_000300 xsd:integer 
+}
+<PubChemDiseaseGeneCooccurrenceShape> {
+  rdf:type [sio:SIO_000983] ;
+  rdf:subject IRI  ;
+  rdf:object IRI  ;
+  sio:SIO_001157 IRI  ;
+  sio:SIO_000300 xsd:integer 
+}
+<PubChemGeneGeneCooccurrenceShape> {
+  rdf:type [sio:SIO_001437] ;
+  rdf:subject @<PubChemGeneShape>  ;
+  rdf:object @<PubChemGeneShape>  ;
+  sio:SIO_001157 IRI  ;
+  sio:SIO_000300 xsd:integer 
+}
+<PubChemAuthorShape> {
+  vcard2006:family-name xsd:string  ;
+  vcard2006:given-name xsd:string + ;
+  vcard2006:fn xsd:string + ;
+  vcard2006:organization-name xsd:string *
+}
+<PubChemAuthorOrcidShape> {
+  vcard2006:hasUID IRI ? ;
+  dcterms:source IRI ?
+}
+<PubChemBookShape> {
+  rdf:type [fabio:Book] ;
+  dcterms:creator @<PubChemAuthorShape>  ;
+  dcterms:date xsd:string  ;
+  dcterms:publisher xsd:string  ;
+  dcterms:title xsd:string  ;
+  prism:location xsd:string  ;
+  skos:exactMatch IRI  ;
+  prism:subtitle xsd:string ? ;
+  prism:isbn xsd:string ?
+}
+<PubChemCellShape> {
+  rdf:type [obo:CLO_0000031] ;
+  rdf:type [obo:SIO_010054] ;
+  up:organism @<PubChemTaxonomyShape>  ;
+  skos:prefLabel xsd:string  ;
+  skos:altLabel xsd:string * ;
+  obo:BFO_0000050 xsd:string * ;
+  skos:closeMatch IRI * ;
+  cito:isDiscussedBy @<PubChemReferenceShape> *
+}
+<PubChemDiseaseShape> {
+  rdf:type [obo:DOID_4] ;
+  rdf:type [obo:MONDO_0000001] ;
+  skos:prefLabel xsd:string  ;
+  skos:altLabel xsd:string * ;
+  skos:closeMatch IRI * ;
+  skos:relatedMatch IRI *
+}
+<PubChemGrantShape> {
+  rdf:type [frapo:Grant] ;
+  frapo:hasFundingAgency @<PubChemOrganizationShape>  ;
+  frapo:hasGrantNumber xsd:string 
+}
+<PubChemJournalShape> {
+  rdf:type [fabio:Journal] ;
+  prism:eissn xsd:string ? ;
+  prism:issn xsd:string  ;
+  dcterms:title xsd:string  ;
+  fabio:hasNLMJournalTitleAbbreviation xsd:string  ;
+  fabio:hasNationalLibraryOfMedicineJournalId xsd:string  ;
+  skos:exactMatch IRI *
+}
+<PubChemOrganizationShape> {
+  rdf:type [frapo:FundingAgency] ;
+  rdf:type [vcard2006:Organization] ;
+  skos:closeMatch IRI * ;
+  vcard2006:country-name xsd:string  ;
+  vcard2006:fn xsd:string +
+}

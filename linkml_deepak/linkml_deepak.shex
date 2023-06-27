@@ -1,0 +1,326 @@
+# metamodel_version: 1.7.0
+BASE <https://rdf.ncbi.nlm.nih.gov/pubchem/vocabulary#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX biopax: <http://www.biopax.org/release/biopax-level3.owl#>
+PREFIX prism: <http://prismstandard.org/namespaces/basic/3.0/>
+PREFIX cito: <http://purl.org/spar/cito/>
+PREFIX fabio: <http://purl.org/spar/fabio/>
+PREFIX frapo: <http://purl.org/cerif/frapo/>
+PREFIX iao: <http://purl.obolibrary.org/obo/IAO_>
+PREFIX ro: <http://purl.obolibrary.org/obo/>
+PREFIX linkml: <https://w3id.org/linkml/>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX uniprot: <http://purl.uniprot.org/core/>
+PREFIX obi: <http://purl.obolibrary.org/obo/OBI_>
+PREFIX dc1: <http://purl.org/dc/terms/>
+PREFIX pav: <http://example.org/UNKNOWN/pav/>
+linkml:String xsd:string
+linkml:Integer xsd:integer
+linkml:Boolean xsd:boolean
+linkml:Float xsd:float
+linkml:Double xsd:double
+linkml:Decimal xsd:decimal
+linkml:Time xsd:time
+linkml:Date xsd:date
+linkml:Datetime xsd:dateTime
+linkml:DateOrDatetime linkml:DateOrDatetime
+linkml:Uriorcurie IRI
+linkml:Curie xsd:string
+linkml:Uri IRI
+linkml:Ncname xsd:string
+linkml:Objectidentifier IRI
+linkml:Nodeidentifier NONLITERAL
+linkml:Jsonpointer xsd:string
+linkml:Jsonpath xsd:string
+linkml:Sparqlpath xsd:string
+<Author> CLOSED {
+    (  $<Author_tes> (  vcard:fn @linkml:String ? ;
+          vcard:family-name @linkml:String ? ;
+          vcard:given-name @linkml:String ? ;
+          vcard:organziation-name @linkml:String ? ;
+          vcard:hasUID @linkml:String ?
+       ) ;
+       rdf:type [ <Author> ] ?
+    )
+}
+<BioAssay> CLOSED {
+    (  $<BioAssay_tes> (  dc1:source @linkml:String ? ;
+          dc1:title @linkml:String ? ;
+          rdf:type @linkml:Uri * ;
+          <http://www.bioassayontology.org/bao#BAO_0000209> @linkml:Uri ? ;
+          <http://www.bioassayontology.org/bao#BAO_0000210> @linkml:Uri ? ;
+          <http://www.bioassayontology.org/bao#BAO_0001067> @linkml:Uri ? ;
+          <http://www.bioassayontology.org/bao#BAO_0001094> @linkml:Uri ?
+       ) ;
+       rdf:type [ <BioAssay> ] ?
+    )
+}
+<Book> CLOSED {
+    (  $<Book_tes> (  rdf:type @linkml:Uri * ;
+          dc1:title @linkml:String ? ;
+          prism:isbn @linkml:String ? ;
+          prism:location @linkml:String ? ;
+          dc1:creator @linkml:String ? ;
+          dc1:date @linkml:String ? ;
+          dc1:publisher @linkml:String ? ;
+          skos:exactMatch @linkml:Uri *
+       ) ;
+       rdf:type [ <Book> ] ?
+    )
+}
+<CellLine> CLOSED {
+    (  $<CellLine_tes> (  rdf:type @linkml:Uri * ;
+          ro:BFO_0000050 @linkml:String ? ;
+          cito:isDiscussedBy @linkml:Uri * ;
+          uniprot:organism @linkml:String ? ;
+          skos:prefLabel @linkml:String ? ;
+          skos:altLabel @linkml:String ? ;
+          skos:closeMatch @linkml:Uri *
+       ) ;
+       rdf:type [ <CellLine> ] ?
+    )
+}
+<Compound> CLOSED {
+    (  $<Compound_tes> (  <is_active_ingredient_of> @linkml:String * ;
+          <http://semanticscience.org/resource/CHEMINF_000455> @linkml:String * ;
+          <http://semanticscience.org/resource/CHEMINF_000461> @linkml:String * ;
+          <http://semanticscience.org/resource/CHEMINF_000462> @linkml:Uri * ;
+          <http://semanticscience.org/resource/SIO_000008> @linkml:String * ;
+          ro:RO_0000087 @linkml:Uri ? ;
+          rdf:type @linkml:Uri * ;
+          skos:closeMatch @linkml:Uri *
+       ) ;
+       rdf:type [ <Compound> ] ?
+    )
+}
+<Concept> CLOSED {
+    (  $<Concept_tes> (  pav:importedFrom @linkml:String ? ;
+          skos:broader @linkml:String ? ;
+          skos:inScheme @linkml:String ? ;
+          skos:prefLabel @linkml:String ?
+       ) ;
+       rdf:type [ <Concept> ] ?
+    )
+}
+<ConservedDomain> CLOSED {
+    (  $<ConservedDomain_tes> (  rdf:type @linkml:Uri * ;
+          dc1:title @linkml:String ? ;
+          dc1:abstract @linkml:String ? ;
+          cito:isDiscussedBy @linkml:Uri *
+       ) ;
+       rdf:type [ <ConservedDomain> ] ?
+    )
+}
+<Cooccurrence> CLOSED {
+    (  $<Cooccurrence_tes> (  rdf:type @linkml:Uri * ;
+          <http://semanticscience.org/resource/SIO_000300> @linkml:Integer ? ;
+          <http://semanticscience.org/resource/SIO_001157> @linkml:String ? ;
+          rdf:subject @linkml:String ? ;
+          rdf:object @linkml:String ?
+       ) ;
+       rdf:type [ <Cooccurrence> ] ?
+    )
+}
+<Descriptor> CLOSED {
+    (  $<Descriptor_tes> (  <http://semanticscience.org/resource/SIO_000011> @linkml:Uri ? ;
+          <http://semanticscience.org/resource/SIO_000221> @linkml:Uri ? ;
+          <http://semanticscience.org/resource/SIO_000300> @linkml:Float ?
+       ) ;
+       rdf:type [ <Descriptor> ] ?
+    )
+}
+<Disease> CLOSED {
+    (  $<Disease_tes> (  rdf:type @linkml:Uri * ;
+          skos:prefLabel @linkml:String ? ;
+          skos:altLabel @linkml:String ? ;
+          skos:closeMatch @linkml:Uri * ;
+          skos:relatedMatch @linkml:Uri *
+       ) ;
+       rdf:type [ <Disease> ] ?
+    )
+}
+<Endpoint> CLOSED {
+    (  $<Endpoint_tes> (  iao:0000136 @linkml:Uri ? ;
+          cito:citesAsDataSource @linkml:Uri ? ;
+          <PubChemAssayOutcome> @linkml:String ? ;
+          <http://semanticscience.org/resource/SIO_000221> @linkml:Uri ? ;
+          <http://semanticscience.org/resource/SIO_000300> @linkml:Float ? ;
+          rdfs:label @linkml:String ?
+       ) ;
+       rdf:type [ <Endpoint> ] ?
+    )
+}
+<FDAApprovedDrugs> CLOSED {
+    (  $<FDAApprovedDrugs_tes> rdf:type . * ;
+       rdf:type [ <FDAApprovedDrugs> ] ?
+    )
+}
+<Gene> CLOSED {
+    (  $<Gene_tes> (  rdf:type @linkml:Uri * ;
+          <http://www.bioassayontology.org/bao#BAO_0002870> @linkml:Uri ? ;
+          skos:prefLabel @linkml:String ? ;
+          skos:altLabel @linkml:String ? ;
+          skos:closeMatch @linkml:Uri * ;
+          owl:sameAs @linkml:Uri ? ;
+          ro:RO_0000056 @linkml:Uri ? ;
+          ro:RO_0000085 @linkml:Uri ? ;
+          ro:RO_0001025 @linkml:String ? ;
+          cito:isDiscussedBy @linkml:Uri *
+       ) ;
+       rdf:type [ <Gene> ] ?
+    )
+}
+<Grant> CLOSED {
+    (  $<Grant_tes> (  frapo:hasFundingAgency @linkml:String ? ;
+          frapo:hasGrantNumber @linkml:String ? ;
+          rdf:type @linkml:Uri *
+       ) ;
+       rdf:type [ <Grant> ] ?
+    )
+}
+<InChIkey> CLOSED {
+    (  $<InChIkey_tes> (  rdf:type @linkml:Uri * ;
+          <http://semanticscience.org/resource/SIO_000011> @linkml:Uri ? ;
+          <http://semanticscience.org/resource/SIO_000300> @linkml:String ?
+       ) ;
+       rdf:type [ <InChIkey> ] ?
+    )
+}
+<Journal> CLOSED {
+    (  $<Journal_tes> (  rdf:type @linkml:Uri * ;
+          dc1:title @linkml:String ? ;
+          prism:eissn @linkml:String ? ;
+          fabio:hasNLMJournalTitleAbbreviation @linkml:String ? ;
+          fabio:hasNationalLibraryOfMedicineJournalId @linkml:String ? ;
+          skos:exactMatch @linkml:Uri *
+       ) ;
+       rdf:type [ <Journal> ] ?
+    )
+}
+<MeasureGroup> CLOSED {
+    (  $<MeasureGroup_tes> (  rdf:type @linkml:Uri * ;
+          dc1:title @linkml:String ? ;
+          obi:0000299 @linkml:String ? ;
+          ro:RO_0000057 @linkml:String ? ;
+          dc1:source @linkml:String ?
+       ) ;
+       rdf:type [ <MeasureGroup> ] ?
+    )
+}
+<Neighbor> CLOSED {
+    (  $<Neighbor_tes> (  rdf:type @linkml:Uri * ;
+          <http://semanticscience.org/resource/SIO_000300> @linkml:Float ? ;
+          <http://semanticscience.org/resource/SIO_000216> @linkml:Uri ? ;
+          <http://semanticscience.org/resource/SIO_000628> @linkml:Uri ? ;
+          <http://semanticscience.org/resource/SIO_000232> @linkml:Uri ?
+       ) ;
+       rdf:type [ <Neighbor> ] ?
+    )
+}
+<Organization> CLOSED {
+    (  $<Organization_tes> (  rdf:type @linkml:Uri * ;
+          vcard:country-name @linkml:String ? ;
+          vcard:fn @linkml:String ?
+       ) ;
+       rdf:type [ <Organization> ] ?
+    )
+}
+<Pathway> CLOSED {
+    (  $<Pathway_tes> (  rdf:type @linkml:Uri * ;
+          dc1:title @linkml:String ? ;
+          uniprot:organism @linkml:String ? ;
+          dc1:source @linkml:String ? ;
+          owl:sameAs @linkml:Uri ? ;
+          ro:RO_0000057 @linkml:String ? ;
+          biopax:pathwayComponent @linkml:Uri ? ;
+          cito:isDiscussedBy @linkml:Uri * ;
+          skos:related @linkml:Uri ?
+       ) ;
+       rdf:type [ <Pathway> ] ?
+    )
+}
+<Protein> CLOSED {
+    (  $<Protein_tes> (  rdf:type @linkml:Uri * ;
+          skos:prefLabel @linkml:String ? ;
+          skos:altLabel @linkml:String ? ;
+          owl:sameAs @linkml:Uri ? ;
+          uniprot:encodedBy @linkml:Uri ? ;
+          skos:closeMatch @linkml:Uri * ;
+          uniprot:organism @linkml:String ? ;
+          uniprot:enzyme @linkml:Uri ? ;
+          <hasSimilarProtein> @linkml:Uri ? ;
+          ro:RO_0002180 @linkml:Uri ? ;
+          <http://rdf.wwpdb.org/schema/pdbx-v40.owllink_to_pdb> @linkml:Uri ? ;
+          <http://www.bioassayontology.org/bao#BAO_0002817> @linkml:String ? ;
+          cito:isDiscussedBy @linkml:Uri *
+       ) ;
+       rdf:type [ <Protein> ] ?
+    )
+}
+<Reference> CLOSED {
+    (  $<Reference_tes> (  dc1:title @linkml:String ? ;
+          prism:issn @linkml:String ? ;
+          prism:contentType @linkml:String ? ;
+          prism:pageRange @linkml:String ? ;
+          prism:startingPage @linkml:String ? ;
+          frapo:hasFundingAgency @linkml:Uri ? ;
+          frapo:isSupportedBy @linkml:Uri ? ;
+          prism:publicationName @linkml:String ? ;
+          dc1:creator @linkml:String ? ;
+          dc1:identifier @linkml:String ? ;
+          dc1:isPartOf @linkml:String ? ;
+          dc1:language @linkml:String ? ;
+          dc1:source @linkml:String ? ;
+          fabio:hasPrimarySubjectTerm @linkml:Uri ? ;
+          fabio:hasSubjectTerm @linkml:Uri ? ;
+          dc1:bibliographicCitation @linkml:String ? ;
+          dc1:date @linkml:String ? ;
+          cito:discusses @linkml:String ? ;
+          <discussesAsDerivedByTextMining> @linkml:String ?
+       ) ;
+       rdf:type [ <Reference> ] ?
+    )
+}
+<Source> CLOSED {
+    (  $<Source_tes> (  rdf:type @linkml:Uri * ;
+          dc1:title @linkml:String ? ;
+          rdf:subject @linkml:String ? ;
+          dc1:license @linkml:Uri ? ;
+          dc1:rights @linkml:String ? ;
+          foaf:homepage @linkml:Uri ?
+       ) ;
+       rdf:type [ <Source> ] ?
+    )
+}
+<Substance> CLOSED {
+    (  $<Substance_tes> (  dc1:available @linkml:String ;
+          dc1:modified @linkml:String ? ;
+          dc1:source @linkml:String ? ;
+          <http://semanticscience.org/resource/CHEMINF_000477> @linkml:Uri ? ;
+          <http://semanticscience.org/resource/SIO_000008> @linkml:String *
+       ) ;
+       rdf:type [ <Substance> ] ?
+    )
+}
+<Synonym> CLOSED {
+    (  $<Synonym_tes> (  rdf:type @linkml:Uri * ;
+          <http://semanticscience.org/resource/SIO_000300> @linkml:String ?
+       ) ;
+       rdf:type [ <Synonym> ] ?
+    )
+}
+<Taxonomy> CLOSED {
+    (  $<Taxonomy_tes> (  rdf:type @linkml:Uri * ;
+          skos:prefLabel @linkml:String ? ;
+          skos:altLabel @linkml:String ? ;
+          owl:sameAs @linkml:Uri ? ;
+          skos:closeMatch @linkml:Uri *
+       ) ;
+       rdf:type [ <Taxonomy> ] ?
+    )
+}
