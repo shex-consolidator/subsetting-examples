@@ -1,0 +1,19 @@
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX id_tax: <http://identifiers.org/taxonomy/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+# Link to SPARQL endpoint
+# https://is.gd/MGeyxI
+SELECT DISTINCT  ?taxonomy_id ?taxonomy_name ?togogenome_gene ?protein
+FROM <http://togogenome.org/graph/taxonomy>
+FROM <http://togogenome.org/graph/tgup>
+FROM <http://togogenome.org/graph/uniprot>
+WHERE {
+  VALUES ?taxonomy_id { id_tax:608538 } 
+  ?taxonomy_id rdfs:label ?taxonomy_name .
+  ?togogenome_gene rdfs:seeAlso ?taxonomy_id .
+  ?togogenome_gene skos:exactMatch ?refseq_gene ;
+    rdfs:seeAlso ?id_upid .
+  ?id_upid rdfs:seeAlso ?protein .
+  ?protein a up:Protein .  
+}
