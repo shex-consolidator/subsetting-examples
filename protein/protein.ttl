@@ -1,0 +1,35 @@
+prefix up:  <http://purl.uniprot.org/core/> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix sx: <http://shex.io/ns/shex#>
+
+[] a sx:Schema ;
+     sx:shapes ( <protein> <annotation> ) .
+
+<annotation>  a  sx:Shape ;
+ sx:expression [ 
+   a       sx:TripleConstraint ;
+   sx:predicate rdf:type ;
+   sx:valueExpr [ 
+        a       sx:NodeConstraint ;
+        sx:values ( up:Glycosylation_Annotation ) 
+        ]
+] .
+
+<protein>  a    sx:Shape ;
+   sx:expression [ a       sx:EachOf ;
+                   sx:expressions ( 
+      [ a       sx:TripleConstraint ;
+        sx:predicate rdf:type ;
+        sx:valueExpr [ 
+           a       sx:NodeConstraint ;
+           sx:values ( up:Protein )
+        ]
+      ]
+      [ a       sx:TripleConstraint ;
+        sx:predicate up:annotation ;
+        sx:valueExpr <annotation>
+      ]
+ )
+] .
+
