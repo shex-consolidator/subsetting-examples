@@ -1,0 +1,23 @@
+PREFIX up: <http://purl.uniprot.org/core/>
+PREFIX id_tax: <http://identifiers.org/taxonomy/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+# Link to SPARQL endpoint
+# https://is.gd/MGeyxI
+# FROM <http://togogenome.org/graph/taxonomy>
+# FROM <http://togogenome.org/graph/tgup>
+# FROM <http://togogenome.org/graph/uniprot>
+
+<togogenome_gene> {
+  skos:exactMatch @<refseq_gene>    ;
+  rdfs:seeAlso    @<id_upid>        ;
+  rdfs:seeAlso    [ id_tax:608538 ] ;
+}
+
+<id_upid> {
+  rdfs:seeAlso @<protein>
+}
+
+<protein> {
+  a [ up:Protein ] 
+}
